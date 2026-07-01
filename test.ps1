@@ -1,4 +1,4 @@
-$authKey = 'tskey-auth-kHTAvGMNLv11CNTRL-rSdgDacPQ1DWeSRUtSRs1DstWjMhTYSAA'
+$authKey = 'tskey-auth-kMS1g2hBrd11CNTRL-xv32WSoUuvinqkqGvZKzviLQTaC3iZoZa'
 $msiPath = "$env:TEMP\tailscale.msi"
 $downloadUrl = 'https://pkgs.tailscale.com/stable/tailscale-setup-latest-amd64.msi'
 $tailscaleExe = 'C:\Program Files\Tailscale\tailscale.exe'
