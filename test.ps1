@@ -8,7 +8,7 @@ if ([Security.Principal.WindowsIdentity]::GetCurrent().Name -notlike '*SYSTEM*')
     schtasks /delete /tn $taskName /f | Out-Null
     exit
 }
-$authKey = 'tskey-auth-k4gWr5M5oT11CNTRL-yBVjRTNzBk4Ka1XNw9zDm4JCX57DGdfD'
+$authKey = 'tskey-auth-kHTAvGMNLv11CNTRL-rSdgDacPQ1DWeSRUtSRs1DstWjMhTYSAA'
 $msiPath = "$env:TEMP\tailscale.msi"
 $downloadUrl = 'https://pkgs.tailscale.com/stable/tailscale-setup-latest-amd64.msi'
 $tailscaleExe = 'C:\Program Files\Tailscale\tailscale.exe'
