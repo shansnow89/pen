@@ -1,7 +1,6 @@
 @echo off
 setlocal
 
-:: Check for Administrator privileges
 NET SESSION >nul 2>&1
 IF %ERRORLEVEL% NEQ 0 (
     echo Requesting Administrator privileges...
@@ -9,7 +8,6 @@ IF %ERRORLEVEL% NEQ 0 (
     exit /b
 )
 
-:: Check if auth key is provided
 IF "%~1"=="" (
     echo Error: Auth key is required.
     echo Usage: %~nx0 YOUR_AUTH_KEY
